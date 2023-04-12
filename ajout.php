@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
 
       $request=$database->prepare("INSERT INTO articles(titre,contenu,date) VALUES (:titre,:contenu,NOW())");
       $request->execute($data);
-      header("Location:index.template.php");
+      header("Location:index.php");
     }
   }
 }

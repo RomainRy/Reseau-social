@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
 
       $request=$database->prepare("DELETE FROM articles WHERE id =:article_id");
       $request->execute($data);
-      header("Location:index.template.php");
+      header("Location:index.php");
     }
   }
 }
