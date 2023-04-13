@@ -1,6 +1,6 @@
 // Récupération des blocs
-var mainMenu = document.querySelector("#menu");
-var burgerMenu = document.querySelector("#menu-burger");
+let mainMenu = document.querySelector("#menu");
+let burgerMenu = document.querySelector("#menu-burger");
 
 /*===============================*/
 /*=== Clic sur le menu burger ===*/
@@ -84,14 +84,24 @@ if(screen.width <= 1024) {
 
 
 
-let btn = document.getElementById("button1");
-let txt = document.querySelector("p");
-btn.addEventListener("click", updateBtn);
+const toggleButtons = document.querySelectorAll(".toggle-panel");
 
-function updateBtn() {
-  if (btn.value === "êtes-vous sûr de vouloir supprimer cette publication") {
-    location.reload();
-  } else {
-    btn.value = "êtes-vous sûr de vouloir supprimer cette publication";
-  }
-}
+toggleButtons.forEach(button => {
+  button.addEventListener("click", () => {
+    const panel = button.nextElementSibling;
+    if (panel.style.display === "none") {
+      panel.style.display = "flex";
+    } else {
+      panel.style.display = "none";
+    }
+  });
+});
+
+
+
+
+
+
+
+
+
