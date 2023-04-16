@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:3306
--- Généré le : jeu. 13 avr. 2023 à 21:19
+-- Généré le : dim. 16 avr. 2023 à 18:57
 -- Version du serveur : 8.0.30
 -- Version de PHP : 8.1.10
 
@@ -31,6 +31,7 @@ CREATE TABLE `articles` (
   `id` int NOT NULL,
   `titre` varchar(140) NOT NULL,
   `contenu` text NOT NULL,
+  `pseudo` varchar(55) DEFAULT NULL,
   `date` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
@@ -38,10 +39,10 @@ CREATE TABLE `articles` (
 -- Déchargement des données de la table `articles`
 --
 
-INSERT INTO `articles` (`id`, `titre`, `contenu`, `date`) VALUES
-(70, 'azerty', 'azerty', '2023-04-13 13:01:51'),
-(75, 'bonjour', 'salut les amis', '2023-04-13 18:28:05'),
-(77, 'sgdcg', 'dgxfcgv', '2023-04-13 20:03:23');
+INSERT INTO `articles` (`id`, `titre`, `contenu`, `pseudo`, `date`) VALUES
+(85, 'test2', 'test2', 'test', '2023-04-16 19:47:39'),
+(86, 'test3', 'test3', 'test', '2023-04-16 19:54:37'),
+(87, 'article 1', 'test', 'Romain', '2023-04-16 20:16:33');
 
 -- --------------------------------------------------------
 
@@ -63,13 +64,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `pseudo`, `nom`, `email`, `password`, `avatar`) VALUES
-(7, 'aze', 'tt', 'romain.royer78@gmail.com', 'test', 'avatars/istockphoto-1202740292-612x612.jpg'),
-(8, 'test', 'test', 'aaze@zeze', 'test', 'avatars/developper-intelligence-logico-mathematique.jpg'),
-(9, 'azerty', 'azerty', 'azerty@gmail.com', 'azerty', 'avatars/personne-tranquille-e1525701535122.webp'),
-(11, 'romain', 'Romain', 'romain.royer78@gmail.com', 'azerty', 'avatars/istockphoto-1202740292-612x612.jpg'),
-(12, 'az', 'az', 'az@gmail.com', 'az', 'avatars/Apple-logo-1.jpg'),
-(13, 'az', 'az', 'az@gmail.com', 'az', 'avatars/istockphoto-1202740292-612x612.jpg'),
-(14, 'azerty', 'azerty', 'azerty@gmail.com', 'azerty', 'avatars/istockphoto-1202740292-612x612.jpg');
+(18, 'test', 'test', 'test@gmail.com', 'test', 'avatars/51rebKIc+VL._SX355_.jpg'),
+(19, 'Romain', 'Romain', 'romain.royer78@gmail.com', 'test', 'avatars/51rebKIc+VL._SX355_.jpg');
 
 --
 -- Index pour les tables déchargées
@@ -95,13 +91,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT pour la table `articles`
 --
 ALTER TABLE `articles`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=88;
 
 --
 -- AUTO_INCREMENT pour la table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
