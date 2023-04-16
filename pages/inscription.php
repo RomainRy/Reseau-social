@@ -2,6 +2,16 @@
 
 require 'database.php';
 
+session_start();
+
+// Vérifiez si l'utilisateur est déjà connecté
+if (isset($_SESSION['username'])) {
+    // Rediriger l'utilisateur vers la page d'accueil
+    
+} else {
+    header('Location: connexion.php');
+    exit();
+}
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Récupérer les données du formulaire
@@ -12,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     // Traitement de l'upload de l'avatar
     $avatar = $_FILES['avatar']['name'];
-    $upload_dir = 'avatars/';
+    $upload_dir = '../avatars/';
     $upload_file = $upload_dir . basename($avatar);
     $upload_ok = move_uploaded_file($_FILES['avatar']['tmp_name'], $upload_file);
 
@@ -32,7 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     ]);
 
     // Redirection vers la page de confirmation
-    header("Location: index.php"); /* Redirection du navigateur */
+    header("Location: ../index.php"); /* Redirection du navigateur */
     exit;
 
 }
@@ -48,7 +58,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inscription</title>
-    <link rel="stylesheet" href="inscription.css">
+    <link rel="stylesheet" href="../css/inscription.css">
     
 </head>
 </head>

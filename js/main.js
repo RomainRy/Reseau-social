@@ -2,9 +2,6 @@
 let mainMenu = document.querySelector("#menu");
 let burgerMenu = document.querySelector("#menu-burger");
 
-/*===============================*/
-/*=== Clic sur le menu burger ===*/
-/*===============================*/
 // Vérifie si l'événement touchstart existe et est le premier déclenché
 var clickedEvent = "click"; // Au clic si "touchstart" n'est pas détecté
 window.addEventListener('touchstart', function detectTouch() {

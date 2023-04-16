@@ -1,6 +1,16 @@
 <?php
 require_once 'database.php';
 
+session_start();
+
+// Vérifiez si l'utilisateur est déjà connecté
+if (isset($_SESSION['username'])) {
+  // Rediriger l'utilisateur vers la page d'accueil
+  
+} else {
+  header('Location: connexion.php');
+  exit();
+}
 
 if ($_SERVER['REQUEST_METHOD'] === "POST") {
   if (
@@ -17,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
 
       $request=$database->prepare("DELETE FROM articles WHERE id =:article_id");
       $request->execute($data);
-      header("Location:index.php");
+      header("Location: ../index.php");
     }
   }
 }

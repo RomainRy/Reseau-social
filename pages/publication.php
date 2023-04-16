@@ -1,3 +1,19 @@
+<?php 
+
+require_once 'database.php';
+
+session_start();
+
+// Vérifiez si l'utilisateur est déjà connecté
+if (isset($_SESSION['username'])) {
+  // Rediriger l'utilisateur vers la page d'accueil
+  
+} else {
+  header('Location: connexion.php');
+  exit();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,7 +21,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="publication.css">
+  <link rel="stylesheet" href="../css/publication.css">
   <title>Publication</title>
 </head>
 
