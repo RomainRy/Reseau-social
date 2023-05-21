@@ -17,17 +17,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $username = $_POST['username'];
         $password = $_POST['password'];
 
-        $conn = mysqli_connect($host, $user, $pass, 'blog');
+        $dsn = 'mysql:host=' . $host . ';dbname=blog';
+        $pdo = new PDO($dsn, $user, $pass);
 
-        // Requête pour vérifier si l'utilisateur existe et si le mot de passe est correct
-        $query = "SELECT * FROM users WHERE email='$username' AND password='$password'";
-        $result = mysqli_query($conn, $query);
+        // Préparez la requête pour vérifier si l'utilisateur existe et si le mot de passe est correct
+        $query = "SELECT * FROM users WHERE email=:username AND password=:password";
+        $statement = $pdo->prepare($query);
+        $statement->bindParam(':username', $username);
+        $statement->bindParam(':password', $password);
+        $statement->execute();
 
-        if (mysqli_num_rows($result) == 1) {
+        if ($statement->rowCount() == 1) {
             // L'utilisateur est authentifié, stockez le nom d'utilisateur dans la session
             $_SESSION['username'] = $username;
 
-            $row = mysqli_fetch_assoc($result);
+            $row = $statement->fetch(PDO::FETCH_ASSOC);
             $pseudo = $row['pseudo'];
             $avatar = $row['avatar'];
             $_SESSION['pseudo'] = $pseudo;
@@ -42,7 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
 
         // Fermez la connexion à la base de données
-        mysqli_close($conn);
+        $pdo = null;
     } else {
         // Affichez un message d'erreur si le nom d'utilisateur ou le mot de passe est manquant
         $errorMessage = 'Veuillez entrer un nom d\'utilisateur et un mot de passe.';
