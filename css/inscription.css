@@ -4,15 +4,26 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    height: 80vh;
+    margin-top: 15px;
     font-size: 20px;
     background-color: #f1f1f1;
-   
+}
+
+.form-control{
+    margin-top: 20px !important;
+}
+.background{
+    background-color: #e74c3c;
+    padding: 35px 40px 40px 35px;
+    border-radius: 20px;
+} 
+
+label{
+    display: inline;
+    white-space: nowrap;
     
 }
 
-.background{
-    background-color: #e74c3c;
-    padding: 5px 15px 40px 35px;
-    border-radius: 20px;
+.gras{
+    font-weight: bold;
 }

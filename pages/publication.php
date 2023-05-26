@@ -5,7 +5,7 @@ require_once 'database.php';
 session_start();
 
 // Vérifiez si l'utilisateur est déjà connecté
-if (isset($_SESSION['username'])) {
+if (isset($_SESSION['pseudo'])) {
   // Rediriger l'utilisateur vers la page d'accueil
   
 } else {

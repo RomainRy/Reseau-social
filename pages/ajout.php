@@ -4,7 +4,7 @@ require_once 'database.php';
 session_start();
 
 // Vérifiez si l'utilisateur est déjà connecté
-if (isset($_SESSION['username'])) {
+if (isset($_SESSION['pseudo'])) {
   // Rediriger l'utilisateur vers la page d'accueil
   
 } else {
@@ -23,10 +23,11 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
       $data=[
         'titre'=>$_POST['titre'],
         'contenu'=>$_POST['contenu'],
-        'pseudo'=>$_SESSION['pseudo']
+        'pseudo'=>$_SESSION['pseudo'],
+        'tag'=>$_POST['tag']
       ];
 
-      $request=$database->prepare("INSERT INTO articles(titre,contenu,pseudo,date) VALUES (:titre,:contenu,:pseudo,NOW())");
+      $request=$database->prepare("INSERT INTO articles(titre,contenu,pseudo,date,tag) VALUES (:titre,:contenu,:pseudo,NOW(),:tag)");
       $request->execute($data);
       header("Location: ../index.php");
     }

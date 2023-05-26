@@ -91,12 +91,54 @@ toggleButtons.forEach(button => {
     } else {
       panel.style.display = "none";
     }
+	
   });
 });
 
 
+let modal = document.getElementById("modal");
+let openModalBtn = document.getElementById("openModalBtn");
+let closeBtn = document.getElementsByClassName("close")[0];
 
+openModalBtn.onclick = function() {
+  modal.style.display = "block";
+}
 
+closeBtn.onclick = function() {
+  modal.style.display = "none";
+}
+
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+
+document.addEventListener("DOMContentLoaded", function(event) {
+	var filterButtons = document.querySelectorAll(".filter-button");
+	var articles = document.querySelectorAll(".article");
+  
+	filterButtons.forEach(function(button) {
+	  button.addEventListener("click", function() {
+		var filter = this.getAttribute("data-filter");
+  
+		articles.forEach(function(article) {
+		  var tags = article.getAttribute("data-tags").split(" ");
+		  if (filter === "all" || tags.includes(filter)) {
+			article.style.display = "block";
+		  } else {
+			article.style.display = "none";
+		  }
+		});
+  
+		filterButtons.forEach(function(button) {
+		  button.classList.remove("active");
+		});
+		this.classList.add("active");
+	  });
+	});
+  });
+  
 
 
 

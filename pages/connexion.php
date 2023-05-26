@@ -5,7 +5,7 @@ require_once 'database.php';
 session_start();
 
 // Vérifiez si l'utilisateur est déjà connecté
-if (isset($_SESSION['username'])) {
+if (isset($_SESSION['pseudo'])) {
     // Rediriger l'utilisateur vers la page d'accueil
     header('Location: ../index.php');
     exit();
@@ -39,6 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
             // Rediriger l'utilisateur vers la page d'accueil
             header('Location: ../index.php');
+
             exit();
         } else {
             // Affichez un message d'erreur si le nom d'utilisateur ou le mot de passe est incorrect
@@ -62,32 +63,47 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../css/connection.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
   <title>Publication</title>
 </head>
 
 
 <body class="connection">
     <div class="background">
-        <h1>Connexion</h1>
+        <div class="col-lg-12 text-center">
+            <h1 class="gras">Connexion</h1><br>
 
-        <?php if (isset($errorMessage)): ?>
-            <p>
-                <?php echo $errorMessage; ?>
-            </p>
-        <?php endif; ?>
+            <?php if (isset($errorMessage)): ?>
+                <p>
+                    <?php echo $errorMessage; ?>
+                </p>
+            <?php endif; ?>
 
-        <form method="post" action="connexion.php">
-            <label for="username">Email :</label>
-            <input type="email" name="username" required>
+            <form method="post" action="connexion.php">
+                <div class="row mb-3 align-items-center">
+                    
+                    <div class="col-sm-12">
+                        <input type="email" name="username" required class="form-control" placeholder="Email" required>
+                    </div>
+                </div>
+        
+                <br>
 
-            <br>
+                <div class="row mb-3 align-items-center">
+                    
+                    <div class="col-sm-12">
+                        <input type="password" name="password" required class="form-control" placeholder="Mot de passe" required>
+                    </div>    
+                </div>
 
-            <label for="password">Mot de passe :</label>
-            <input type="password" name="password" required>
-
-            <br>
-            <button type="submit">Connexion</button>
-        </form>
+                <br>
+                <button type="submit" class="btn btn-light">Connexion</button>
+                <a class="btn btn-light" href="inscription.php">Inscription</a>
+                
+            </form>
+        </div>
+        
     </div>
 </body>
 
